@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\ndt <- (\"precipitation_temperature_data.txt\", header = TRUE, dec = \".\")\n\nshinyServer(function(input, output) {})\n",
+    "created" : 1460808623657.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1182078964",
+    "id" : "21E8D791",
+    "lastKnownWriteTime" : 1460812782,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rchart_rain/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
