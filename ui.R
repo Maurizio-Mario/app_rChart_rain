@@ -1,6 +1,4 @@
 library(shiny)
-library(rCharts)
-options(RCHART_LIB = 'polycharts')
 
 shinyUI(fluidPage(
 
@@ -10,7 +8,8 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
         selectInput(inputId = 'station', lab = "Station",
-                    choices = sort(as.character(dt$Weather_station))),
+                    choices = sort(as.character(dt$Weather_station)), 
+                    selected = NULL),
         sliderInput(inputId = "year", lab = "Years:",
                     min = 1980,
                     max = 2011,
@@ -22,7 +21,8 @@ shinyUI(fluidPage(
 
     ),
     mainPanel(
-        showOutput("chart1", "polycharts")
+        h4("test"),
+        plotOutput("chart1")
     )
   )
 ))

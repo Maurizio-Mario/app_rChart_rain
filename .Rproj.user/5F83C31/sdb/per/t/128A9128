@@ -1,13 +1,13 @@
 {
-    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n\n  titlePanel(\"Rain across the Alps\"),\n\n  # Sidebar with a slider input for number of bins\n  sidebarLayout(\n    sidebarPanel(\n        selectInput(inputId = 'station', lab = \"Station\",\n                    choices = sort(as.character(dt$Weather_station))),\n        sliderInput(\"Year\", lab = \"Years:\",\n                    min = 1980,\n                    max = 2011,\n                    value = c(1980, 1985)),\n        checkboxGroupInput(inputId = \"data\", lab = \"Data\",\n                           choices = c(\"Precipitation\" = \"precipitation\",\n                                       \"Mean temperature\" = \"meanTemp\"))\n\n    ),\n    mainPanel(\n        h4(\"Title\"),\n        plotOutput(\"\")\n    )\n  )\n))\n",
+    "contents" : "library(shiny)\n\nshinyUI(fluidPage(\n\n  titlePanel(\"Rain across the Alps\"),\n\n  # Sidebar with a slider input for number of bins\n  sidebarLayout(\n    sidebarPanel(\n        selectInput(inputId = 'station', lab = \"Station\",\n                    choices = sort(as.character(dt$Weather_station)), \n                    selected = NULL),\n        sliderInput(inputId = \"year\", lab = \"Years:\",\n                    min = 1980,\n                    max = 2011,\n                    value = c(1980, 1985)),\n        checkboxGroupInput(inputId = \"data\", lab = \"Data\",\n                           choices = c(\"Precipitation\" = \"precipitation\",\n                                       \"Mean temperature\" = \"meanTemp\")),\n        submitButton(\"Go!\")\n\n    ),\n    mainPanel(\n        h4(\"test\"),\n        plotOutput(\"chart1\")\n    )\n  )\n))\n",
     "created" : 1460808623122.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3658666811",
+    "hash" : "790829125",
     "id" : "128A9128",
-    "lastKnownWriteTime" : 1460812620,
-    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rchart_rain/ui.R",
+    "lastKnownWriteTime" : 1460844061,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rChart_rain/ui.R",
     "project_path" : "ui.R",
     "properties" : {
     },

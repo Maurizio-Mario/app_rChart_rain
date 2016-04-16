@@ -1,13 +1,13 @@
 {
-    "contents" : "library(shiny)\ndt <- (\"precipitation_temperature_data.txt\", header = TRUE, dec = \".\")\n\nshinyServer(function(input, output) {})\n",
+    "contents" : "library(shiny)\nlibrary(xtable)\nlibrary(lattice)\ndt <- read.table(\"precipitation_temperature_data.txt\", header = TRUE, dec = \".\", stringsAsFactors = FALSE)\n\n\n\nshinyServer(function(input, output) {\n    output$chart1 <- renderPlot({\n        range <- input$year[1] : input$year[2]\n        station2 <- input$station\n        dt2 <- dt[dt$Weather_station == station2 & dt$Year %in% range, ]\n        if(input$data==\"meanTemp\"){\n            xyplot(Mean_temperature ~ Year, data = dt2, type = \"l\")\n        }else if(input$data == \"precipitation\"){\n            xyplot(Precipitation ~ Year, data = dt2, type = \"l\")\n            }\n    })\n\n    11\n})\n",
     "created" : 1460808623657.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1182078964",
+    "hash" : "1844327558",
     "id" : "21E8D791",
-    "lastKnownWriteTime" : 1460812782,
-    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rchart_rain/server.R",
+    "lastKnownWriteTime" : 1460843662,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rChart_rain/server.R",
     "project_path" : "server.R",
     "properties" : {
     },
