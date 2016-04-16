@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\nshinyUI(pageWithSidebar(\n    headerPanel(\"Standard Normal Distribution\"),\n    sidebarPanel(\n        wellPanel(\n            numericInput('myMean', 'Your mean', 0),\n            numericInput('mySd', 'Your standard deviation', 0),\n            numericInput('myX', 'Your score', 0),\n            conditionalPanel(\n                condition = \"input.p2=='p5'\",\n                numericInput('myY', 'Your second score:', 0)\n            )\n        ),\n        \n        wellPanel(\n            checkboxInput(\"p\", \"Probability?\", FALSE),\n            conditionalPanel(\n                condition = \"input.p==true\",\n                selectInput(inputId = \"p2\", \n                            label = \"Select the probability:\",\n                            choices = c(\"Less than x\" = \"p3\",\n                                        \"More than x\" = \"p4\", \n                                        \"Between x and y\" = \"p5\"),\n                            selected = FALSE)\n            )\n            \n        )\n    ),\n    \n    mainPanel(\n        h4('Standard Normal Curve'),\n        plotOutput(\"sdNorm\")\n    )\n)  \n)",
+    "created" : 1460813188350.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2748476139",
+    "id" : "FAE6713C",
+    "lastKnownWriteTime" : 1460659076,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_stdNorm/ui.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

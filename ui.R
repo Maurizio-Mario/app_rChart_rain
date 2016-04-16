@@ -1,11 +1,6 @@
-
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
+library(rCharts)
+options(RCHART_LIB = 'polycharts')
 
 shinyUI(fluidPage(
 
@@ -16,18 +11,18 @@ shinyUI(fluidPage(
     sidebarPanel(
         selectInput(inputId = 'station', lab = "Station",
                     choices = sort(as.character(dt$Weather_station))),
-        sliderInput("Year", lab = "Years:",
+        sliderInput(inputId = "year", lab = "Years:",
                     min = 1980,
                     max = 2011,
                     value = c(1980, 1985)),
         checkboxGroupInput(inputId = "data", lab = "Data",
                            choices = c("Precipitation" = "precipitation",
-                                       "Mean temperature" = "meanTemp"))
+                                       "Mean temperature" = "meanTemp")),
+        submitButton("Go!")
 
     ),
     mainPanel(
-        h4("Title"),
-        plotOutput("")
+        showOutput("chart1", "polycharts")
     )
   )
 ))

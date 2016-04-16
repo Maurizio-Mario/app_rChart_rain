@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\nlibrary(lattice)\n#library(rCharts)\n\nshinyServer(function(input, output) {\n    output$sdNorm <- renderPlot({\n        dt1 <- seq(-4, 4, length = 1000)\n        dt2 <- dnorm(dt1, 0, 1)\n        myMean <- input$myMean\n        mySd <- input$mySd\n        myX <- input$myX\n        myY <- input$myY\n        z <- round((myX - myMean)/mySd, 4)\n        z2 <- round((myY - myMean)/mySd, 4)\n        \n        xyplot(dt2 ~ dt1,\n               type = \"l\",\n               panel = function(x,y, ...){\n                   panel.xyplot(x,y, ...)\n                   p2 <- round(pnorm(myX, myMean, mySd), 4)\n                   p3 <- round(pnorm(myY, myMean, mySd), 4)\n                   panel.abline(v = c(z, 0), lty = 2)\n                   panel.text(lab = c(paste(\"z = \", z, sep = \"\")), y = .41, x = z)\n                   if(input$p==TRUE){\n                       if(input$p2==\"p3\"){\n                           xx <- c(-4, x[x>=-4 & x<=z], z) \n                           yy <- c(0, y[x>=-4 & x<=z], 0) \n                           panel.polygon(xx,yy, ..., col='blue')\n                           panel.text(lab = paste(\"P(X<a) = \", p2, sep = \"\"), x = 3, y = 0.35)\n                           \n                       }else if(input$p2==\"p4\"){\n                           \n                           xx <- c(z, x[x>=z & x<=4], 4)\n                           yy <- c(0, y[x>=z & x<=4], 0)\n                           panel.polygon(xx,yy, ..., col='red')\n                           panel.text(lab = paste(\"P(X>a) = \",(1 - p2), sep = \"\"), x = 3, y = 0.35)\n                       }else{\n                           \n                           if(z < z2){\n                               \n                               xx <- c(z, x[x>=z & x<=z2], z2)\n                               yy <- c(0, y[x>=z & x<=z2], 0)\n                               panel.polygon(xx,yy, ..., col='red')\n                               panel.text(lab = paste(\"P(a<X<b) = \",abs(p3 - p2), sep = \"\"), x = 3, y = 0.35)\n                               panel.abline(v = c(z2, 0), lty = 2)\n                               \n                           }else{\n                               xx <- c(z2, x[x>=z2 & x<=z], z)\n                               yy <- c(0, y[x>=z2 & x<=z], 0)\n                               panel.polygon(xx,yy, ..., col='red')\n                               panel.text(lab = paste(\"P(a<X<b) = \", abs(p3 - p2), sep = \"\"), x = 3, y = 0.35)\n                           }\n                       }\n                   }})\n        \n    })\n})",
+    "created" : 1460813172828.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3259627924",
+    "id" : "A06BD79D",
+    "lastKnownWriteTime" : 1460659095,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_stdNorm/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
