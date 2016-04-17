@@ -1,4 +1,6 @@
 library(shiny)
+library(rCharts)
+options(RCHART_LIB = 'polycharts')
 
 shinyUI(fluidPage(
 
@@ -14,15 +16,14 @@ shinyUI(fluidPage(
                     min = 1980,
                     max = 2011,
                     value = c(1980, 1985)),
-        checkboxGroupInput(inputId = "data", lab = "Data",
-                           choices = c("Precipitation" = "precipitation",
-                                       "Mean temperature" = "meanTemp")),
-        submitButton("Go!")
+        checkboxGroupInput(inputId = "data", lab = "Select",
+                           choices = c("Mean temperature" = "meanTemp",
+                                       "Precipitation" = "precipitation"))
 
     ),
     mainPanel(
-        h4("test"),
-        plotOutput("chart1")
+        h4('Historical data'),
+    plotOutput("chart1")
     )
   )
 ))
