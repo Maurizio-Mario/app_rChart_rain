@@ -10,7 +10,8 @@ shinyUI(fluidPage(
         sidebarPanel(
             selectInput(inputId = 'station', lab = "Station:",
                         choices = sort(as.character(dt$Weather_station)), 
-                        selected = NULL),
+                        selected = NULL,
+                        multiple = TRUE),
             sliderInput(inputId = "year", lab = "Years:",
                         min = 1980,
                         max = 2011,

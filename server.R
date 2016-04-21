@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
     dt3 <- reactive({                   
         range <- input$year[1] : input$year[2]
         station2 <- input$station
-        dt2 <- dt[dt$Weather_station == unlist(station2) & dt$Year %in% range, ]
+        dt2 <- dt[dt$Weather_station %in% unlist(station2) & dt$Year %in% range, ]
         dt2 <- as.data.frame(dt2)
         dt2
     })

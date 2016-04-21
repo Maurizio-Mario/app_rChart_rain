@@ -1,12 +1,12 @@
 {
-    "contents" : "library(shiny)\nlibrary(rCharts)\noptions(RCHART_LIB = 'polycharts')\n\nshinyUI(fluidPage(\n\n  titlePanel(\"Rain across the Alps\"),\n\n  # Sidebar with a slider input for number of bins\n  sidebarLayout(\n    sidebarPanel(\n        selectInput(inputId = 'station', lab = \"Station\",\n                    choices = sort(as.character(dt$Weather_station)), \n                    selected = NULL),\n        sliderInput(inputId = \"year\", lab = \"Years:\",\n                    min = 1980,\n                    max = 2011,\n                    value = c(1980, 1985)),\n        checkboxGroupInput(inputId = \"data\", lab = \"Select\",\n                           choices = c(\"Mean temperature\" = \"meanTemp\",\n                                       \"Precipitation\" = \"precipitation\"))\n\n    ),\n    mainPanel(\n        h4('Historical data'),\n    plotOutput(\"chart1\")\n    )\n  )\n))\n",
+    "contents" : "library(shiny)\nlibrary(rCharts)\noptions(RCHART_LIB = 'nvd3')\n\nshinyUI(fluidPage(\n    \n    titlePanel(\"Alpine weather stations\"),\n    \n    sidebarLayout(\n        sidebarPanel(\n            selectInput(inputId = 'station', lab = \"Station:\",\n                        choices = sort(as.character(dt$Weather_station)), \n                        selected = NULL,\n                        multiple = TRUE),\n            sliderInput(inputId = \"year\", lab = \"Years:\",\n                        min = 1980,\n                        max = 2011,\n                        value = c(1980, 1985)),\n            checkboxGroupInput(inputId = \"data\", lab = \"View:\",\n                               choices = c(\"Mean temperature\" = \"meanTemp\",\n                                           \"Precipitation\" = \"precipitation\"))\n            \n        ),\n        mainPanel(\n            showOutput(\"chart1\", \"nvd3\")\n        )\n    )\n))",
     "created" : 1460808623122.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1506507769",
+    "hash" : "2640569356",
     "id" : "128A9128",
-    "lastKnownWriteTime" : 1460897324,
+    "lastKnownWriteTime" : 1461238520,
     "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rChart_rain/ui.R",
     "project_path" : "ui.R",
     "properties" : {
