@@ -23,12 +23,22 @@ shinyServer(function(input, output) {
         n2$chart(forceY = c(0, 2000))
         }else if(input$data == "meanTemp"){
             n2 <- nPlot(Mean_temperature ~ Year, data = dt3(), group = "Weather_station", type = 'multiBarChart')
+            n2$set(title = "Yearly average temperature")
             n2$chart(forceY = c(0, 15))
         }
         n2$set(dom = 'chart1')
         n2
-
         
 })
+    output$summary <- renderTable({
+        validate(
+            need(input$stats != "", " ")
+        )
+            
+        if(input$stats == TRUE){
+            s <- summary(dt3())
+            s
+        }
+    })
    
 })

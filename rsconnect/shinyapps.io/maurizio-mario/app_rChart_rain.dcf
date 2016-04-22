@@ -1,8 +1,8 @@
 name: app_rChart_rain
 account: maurizio-mario
 server: shinyapps.io
-bundleId: 422299
+bundleId: 427550
 url: https://maurizio-mario.shinyapps.io/app_rChart_rain/
-when: 1460898293.76239
+when: 1461242167.80707
 asMultiple: FALSE
 asStatic: FALSE

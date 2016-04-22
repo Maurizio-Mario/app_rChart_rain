@@ -18,11 +18,15 @@ shinyUI(fluidPage(
                         value = c(1980, 1985)),
             checkboxGroupInput(inputId = "data", lab = "View:",
                                choices = c("Mean temperature" = "meanTemp",
-                                           "Precipitation" = "precipitation"))
+                                           "Precipitation" = "precipitation")),
+            checkboxInput(inputId = "stats", lab = "Summary statistics"),
+            submitButton("Go!")
             
         ),
         mainPanel(
-            showOutput("chart1", "nvd3")
+            h4("paste"),
+            showOutput("chart1", "nvd3"),
+            tableOutput("summary")
         )
     )
 ))
