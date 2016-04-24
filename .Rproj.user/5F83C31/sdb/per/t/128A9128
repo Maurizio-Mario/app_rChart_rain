@@ -1,12 +1,12 @@
 {
-    "contents" : "library(shiny)\nlibrary(rCharts)\noptions(RCHART_LIB = 'nvd3')\n\nshinyUI(fluidPage(\n    \n    titlePanel(\"Alpine weather stations\"),\n    \n    sidebarLayout(\n        sidebarPanel(\n            selectInput(inputId = 'station', lab = \"Station:\",\n                        choices = sort(as.character(dt$Weather_station)), \n                        selected = NULL,\n                        multiple = TRUE),\n            sliderInput(inputId = \"year\", lab = \"Years:\",\n                        min = 1980,\n                        max = 2011,\n                        value = c(1980, 1985)),\n            checkboxGroupInput(inputId = \"data\", lab = \"View:\",\n                               choices = c(\"Mean temperature\" = \"meanTemp\",\n                                           \"Precipitation\" = \"precipitation\"))\n            \n        ),\n        mainPanel(\n            showOutput(\"chart1\", \"nvd3\")\n        )\n    )\n))",
+    "contents" : "library(shiny)\nlibrary(rCharts)\nlibrary(xtable)\noptions(RCHART_LIB = 'nvd3')\n\nshinyUI(fluidPage(\n    \n    titlePanel(\"Alpine weather stations\"),\n    \n    sidebarLayout(\n        sidebarPanel(\n            selectInput(inputId = 'station', lab = \"Station:\",\n                        choices = sort(as.character(dt$Weather_station)), \n                        selected = NULL,\n                        multiple = TRUE),\n            sliderInput(inputId = \"year\", lab = \"Years:\",\n                        min = 1980,\n                        max = 2011,\n                        value = c(1980, 1985)),\n            radioButtons(inputId = \"data\", lab = \"Select:\",\n                               choices = c(\"Mean temperature\" = \"meanTemp\",\n                                           \"Precipitation\" = \"precipitation\"),\n                         selected = FALSE),\n            checkboxInput(inputId = \"stats\", lab = \"Summary statistics\")\n            \n        ),\n        mainPanel(\n            h4(\"paste\"),\n            showOutput(\"chart1\", \"nvd3\"),\n            uiOutput(\"summary\")\n        )\n    )\n))",
     "created" : 1460808623122.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2640569356",
+    "hash" : "2594344825",
     "id" : "128A9128",
-    "lastKnownWriteTime" : 1461238520,
+    "lastKnownWriteTime" : 1461525583,
     "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Shiny_apps/app_rChart_rain/ui.R",
     "project_path" : "ui.R",
     "properties" : {

@@ -30,14 +30,21 @@ shinyServer(function(input, output) {
         n2
         
 })
-    output$summary <- renderTable({
+    output$summary <- renderUI({
         validate(
             need(input$stats != "", " ")
         )
             
         if(input$stats == TRUE){
-            s <- summary(dt3())
-            s
+            s <- xtable(summary(dt3()[4:5]))
+            
+            s <- print(xtable(s, align=rep("c", ncol(s)+1), size = "huge"), 
+                       floating=FALSE, tabular.environment="array", comment=FALSE, print.results=FALSE)
+            
+            html <- paste0("$$", s , "$$")
+            list(
+                withMathJax(HTML(html))
+            )
         }
     })
    
