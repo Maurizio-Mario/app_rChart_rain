@@ -2,6 +2,7 @@ library(shiny)
 library(rCharts)
 library(xtable)
 options(RCHART_LIB = 'nvd3')
+options(RCHART_LIB = 'leaflet')
 
 shinyUI(fluidPage(
     
@@ -21,13 +22,23 @@ shinyUI(fluidPage(
                                choices = c("Mean temperature" = "meanTemp",
                                            "Precipitation" = "precipitation"),
                          selected = FALSE),
+            submitButton("Go!"),
             checkboxInput(inputId = "stats", lab = "Summary statistics")
             
         ),
         mainPanel(
-            h4("paste"),
-            showOutput("chart1", "nvd3"),
-            uiOutput("summary")
+            tabsetPanel(
+                tabPanel(
+                    "History data",
+                    showOutput("chart1", "nvd3"),
+                    uiOutput("summary")
+                ),
+                tabPanel(
+                    "Map",
+                    tags$style('.leaflet {height: 400px;}'),
+                    showOutput("chart2", "leaflet")
+                )
+            )
         )
     )
 ))

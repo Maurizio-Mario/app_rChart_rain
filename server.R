@@ -1,5 +1,6 @@
 library(shiny)
 library(rCharts)
+library(leaflet)
 options(RCHART_LIB = 'nvd3')
 
 dt <- read.table("precipitation_temperature_data.txt", header = TRUE, dec = ".", stringsAsFactors = FALSE)
@@ -12,6 +13,10 @@ shinyServer(function(input, output) {
         dt2 <- as.data.frame(dt2)
         dt2
     })
+    
+    points <- eventReactive(input$station, {
+        cbind(dt3()$north, dt3()$east)
+    }, ignoreNULL = FALSE)
     
     output$chart1 <- renderChart({
         validate(
@@ -47,5 +52,13 @@ shinyServer(function(input, output) {
             )
         }
     })
+    
+    output$chart2 <- renderMap({
+        map3 <- Leaflet$new()
+        map3$setView(c(46.7341, 11.2888), zoom = 13)
+        addMarkers(data = points())
+        map3
+    })
+
    
 })
